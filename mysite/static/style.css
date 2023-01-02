@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 body {
     background-color: white;
@@ -56,13 +56,21 @@ ul {
     width:50%;
 }
 
-
 .inline {
     display: inline;
 }
 
 .secundary-text {
     color:#797979;
+}
+
+.select-day{
+    color: #539DF5;
+    font-weight: 500;    
+}
+
+.select-day-pointer{
+    margin-top: -0.5em;
 }
 
 @media only screen and (max-width: 768px) {

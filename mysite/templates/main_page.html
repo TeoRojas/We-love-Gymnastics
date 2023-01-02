@@ -19,20 +19,21 @@
                 <div class="inline bold-type">{{wod.time}}</div>
 
                 <div class="container" style="margin:4% 0">
-                    <div class="inline-row secundary-text seven-cols">Mon</div>
-                    <div class="inline-row secundary-text seven-cols">Tue</div>
-                    <div class="inline-row secundary-text seven-cols">Wed</div>
-                    <div class="inline-row secundary-text seven-cols">Thu</div>
-                    <div class="inline-row secundary-text seven-cols">Fri</div>
-                    <div class="inline-row secundary-text seven-cols">Sat</div>
-                    <div class="inline-row secundary-text seven-cols">Sun</div>
-                    <div class="inline-row bold-type seven-cols">1</div>
-                    <div class="inline-row bold-type seven-cols">2</div>
-                    <div class="inline-row bold-type seven-cols">3</div>
-                    <div class="inline-row bold-type seven-cols">4</div>
-                    <div class="inline-row bold-type seven-cols">5</div>
-                    <div class="inline-row bold-type seven-cols">6</div>
-                    <div class="inline-row bold-type seven-cols">7</div>
+                    {% for name_day in days_name %}
+                    <div class="inline-row secundary-text seven-cols{% if today_day == name_day %} select-day{% endif %}">{{name_day}}</div>
+                    {% endfor %}
+
+                    {% for num_day in current_week %}
+                    <div class="inline-row bold-type seven-cols{% if today_number == num_day %} select-day{% endif %}">{{num_day}}</div>
+                    {% endfor %}
+
+                    {% for num_day in current_week %}
+                    <div class="inline-row bold-type seven-cols select-day select-day-pointer">
+                        {% if today_number == num_day %}
+                            •
+                        {% endif %}
+                    </div>
+                    {% endfor %}
                 </div>
 
                 {% for exercise in wod.exercises %}
