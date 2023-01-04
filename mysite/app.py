@@ -48,6 +48,8 @@ def get_current_week():
 
 def get_workout_of_day():
     wods = []
+    
+    #with open('/home/trojmat201/mysite/bbdd/BBDD_Gymnastics_WODs.csv', 'r') as file:
     with open('./bbdd/BBDD_Gymnastics_WODs.csv', 'r') as file:
         lines =  file.readlines()
 
