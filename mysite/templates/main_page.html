@@ -31,6 +31,8 @@
                     <div class="inline-row bold-type seven-cols select-day select-day-pointer">
                         {% if today_number == num_day %}
                             •
+                        {% else %}
+                            &nbsp
                         {% endif %}
                     </div>
                     {% endfor %}
