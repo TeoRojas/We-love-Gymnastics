@@ -19,10 +19,6 @@ class Wod:
         return self.name + ", " + self.wod_type + ", " + self.time + ", " + ", ".join(self.exercises)
 
 
-def get_random_number(len):
-    return random.randrange(len)
-
-
 def get_current_week():
     """
     -weekday- corresponds to the position of the day of the week in a list,
@@ -46,7 +42,8 @@ def get_current_week():
 
     return current_week   
 
-def get_workout_of_day():
+
+def get_all_wods():
     wods = []
     
     #with open('/home/trojmat201/mysite/bbdd/BBDD_Gymnastics_WODs.csv', 'r') as file:
@@ -59,8 +56,11 @@ def get_workout_of_day():
 
             wods.append(Wod(*args))
 
-    random_number = random.randrange(len(wods))
-    return wods[random_number]
+    return wods  
+
+
+wods = get_all_wods()
+wod = wods[random.randrange(len(wods))]
 
 
 @app.route('/')
@@ -70,6 +70,8 @@ def index():
     today_number = datetime.now().day
     current_week = get_current_week()
     days_name = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    wod = get_workout_of_day()
     return render_template("main_page.html", wod=wod, today = today, current_week = current_week, today_number = today_number, today_day = today_day, days_name = days_name)
 
+
+if __name__ == '__main__':
+    app.run(debug=True)
