@@ -1,5 +1,3 @@
-
-# A very simple Flask Hello World app for you to get started with...
 from flask import Flask, render_template
 import random
 from datetime import datetime, timedelta
@@ -58,8 +56,46 @@ def get_all_wods():
     return wods  
 
 
+def get_wods_done():
+    wods_done = []
+
+    with open('static/bbdd/WODs_done.csv', 'r') as file:
+        for line in file:
+            wods_done.append(int(line))
+
+    return wods_done
+
+
+def get_wod_number_not_done(num_wods, wods_done):
+    """obtaining a WOD that has not 
+    yet been done (is not in the list of events)"""
+
+    if len(wods_done) == num_wods:
+        """If all WODs are done, reset 
+        the WODs_done file"""
+        open('static/bbdd/WODs_done.csv','w').close()
+
+    wod_number_not_done = random.randrange(num_wods)
+    
+    while wod_number_not_done in wods_done:
+        wod_number_not_done = random.randrange(num_wods)
+
+    print('WOD number not done: -' + str(wod_number_not_done) + '-')
+    print(wods_done)
+
+    return wod_number_not_done
+
+
+def set_wod_done_in_file(wod_number_done):
+    with open('static/bbdd/WODs_done.csv', 'a') as file:
+        file.write(str(wod_number_done)+'\n')
+
+
 wods = get_all_wods()
-wod = wods[random.randrange(len(wods))]
+wods_done = get_wods_done()
+wod_number = get_wod_number_not_done(int(len(wods)), wods_done)
+set_wod_done_in_file(wod_number)
+wod = wods[wod_number]
 
 
 @app.route('/')
