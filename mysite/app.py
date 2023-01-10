@@ -46,8 +46,7 @@ def get_current_week():
 def get_all_wods():
     wods = []
     
-    #with open('/home/trojmat201/mysite/bbdd/BBDD_Gymnastics_WODs.csv', 'r') as file:
-    with open('./bbdd/BBDD_Gymnastics_WODs.csv', 'r') as file:
+    with open('static/bbdd/BBDD_Gymnastics_WODs.csv', 'r') as file:
         lines =  file.readlines()
 
         for i in range(1, len(lines)):
