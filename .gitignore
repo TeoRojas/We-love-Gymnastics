@@ -1,1 +1,1 @@
-. .. .bashrc .cache .git .gitconfig .gitignore .local .profile .pythonstartup.py .vimrc .virtualenvs *.pyc
+. .. .bashrc .cache .git .gitconfig .gitignore .local .profile .pythonstartup.py .vimrc .virtualenvs .python_history *.pyc
